@@ -53,7 +53,6 @@ atlanta-data-blog/
 ├── posts/             # Blog posts (Quarto .qmd files)
 ├── data/              # Raw and processed datasets
 ├── outputs/           # Intermediate analysis outputs and tables
-├── figures/           # Publication-ready visualizations
 ├── styles.css         # Custom CSS styling
 ├── pyproject.toml     # Project dependencies
 └── DEVELOPMENT.md     # Development guide

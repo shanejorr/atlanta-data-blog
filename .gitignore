@@ -31,5 +31,6 @@ data/*.parquet
 
 # IDE
 .vscode/
+.claude/
 *.swp
 *.swo
