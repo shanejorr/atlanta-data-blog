@@ -11,6 +11,15 @@ venv/
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
 
+# Quarto
+/.quarto/
+/_site/
+/_freeze/
+*.html
+.quarto_ipynb_cache/
+*_files/
+.luarc.json
+
 # Data files (you may want to version control small datasets)
 data/*.csv
 data/*.xlsx

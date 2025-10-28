@@ -1,0 +1,16 @@
+---
+title: "Atlanta Metro Data Blog"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: false
+page-layout: full
+title-block-banner: true
+---
+
+Welcome to the Atlanta Metro Data Blog, where we explore the Atlanta metropolitan area and Georgia through data analysis and visualization.
+
+## Recent Posts

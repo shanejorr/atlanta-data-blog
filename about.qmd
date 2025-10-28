@@ -1,0 +1,24 @@
+---
+title: "About"
+---
+
+## About This Blog
+
+This blog explores the Atlanta metropolitan area and Georgia through data analysis and visualization. Using publicly available datasets, I analyze trends, patterns, and insights about the region.
+
+## Technology
+
+All analyses are performed using:
+
+- **Python** for data processing and analysis
+- **Pandas** for data manipulation
+- **Altair** for interactive visualizations
+- **Quarto** for publishing
+
+## Data Sources
+
+All data used in this blog comes from public sources, including government datasets, census data, and other openly available information.
+
+## Contact
+
+[Add your contact information or social media links here]

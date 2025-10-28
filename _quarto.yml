@@ -1,0 +1,37 @@
+project:
+  type: website
+
+website:
+  title: "Atlanta Metro Data Blog"
+  description: "Data analysis exploring the Atlanta metropolitan area and Georgia"
+  site-url: https://yourusername.github.io/atlanta-data-blog
+  repo-url: https://github.com/yourusername/atlanta-data-blog
+  repo-actions: [edit, issue]
+
+  navbar:
+    background: primary
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "About"
+        href: about.qmd
+    right:
+      - icon: github
+        href: https://github.com/yourusename/atlanta-data-blog
+
+  page-footer:
+    center: "Copyright 2025, Atlanta Metro Data Blog"
+
+format:
+  html:
+    theme: journal
+    css: styles.css
+    toc: true
+    code-fold: false
+    code-tools: true
+    code-link: true
+    date-format: "MMMM D, YYYY"
+
+execute:
+  freeze: auto
+  cache: false
