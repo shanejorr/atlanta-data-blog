@@ -10,6 +10,49 @@ This repository contains data analysis projects for a self-hosted blog focused o
 - **Visualization Library**: Altair for interactive visualizations
 - **Publishing Format**: Quarto (.qmd files) with journal theme for self-hosted blog
 
+## Data Storage and Format
+
+### File Format
+- **Always use Parquet format** for storing cleaned/processed data
+- Parquet provides:
+  - Fast read/write performance
+  - Excellent compression (5-10x smaller than CSV)
+  - Preserves all data types
+  - Industry standard with broad tool compatibility
+
+### Pandas Backend
+- **Use PyArrow backend** for pandas DataFrames
+- Benefits:
+  - More memory efficient (especially for strings)
+  - Better null handling with native NULL support
+  - Proper nullable integer types
+  - Improved type system
+
+### Implementation
+
+**Saving data** (in extraction scripts):
+```python
+# Save cleaned data as Parquet
+df.to_parquet('data/project-name/cleaned-data.parquet', index=False)
+```
+
+**Loading data** (in Quarto documents):
+```python
+# Load with PyArrow backend
+df = pd.read_parquet('data/project-name/cleaned-data.parquet',
+                     dtype_backend='pyarrow')
+```
+
+**Creating DataFrames with PyArrow types**:
+```python
+# Use PyArrow-backed dtypes
+df = pd.DataFrame({
+    'name': pd.Series(['Alice', 'Bob'], dtype='string[pyarrow]'),
+    'age': pd.Series([25, 30], dtype='Int64'),  # nullable integer
+    'score': pd.Series([95.5, 87.3], dtype='float64[pyarrow]')
+})
+```
+
 ## Code Standards
 
 ### Programming Paradigm
