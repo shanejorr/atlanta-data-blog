@@ -31,6 +31,11 @@ data/*.parquet
 
 # IDE
 .vscode/
-.claude/
 *.swp
 *.swo
+
+# LLM/AI Assistant files
+.claude/
+CLAUDE.md
+.copilot/
+.github/copilot/
