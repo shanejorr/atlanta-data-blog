@@ -39,3 +39,4 @@ data/*.parquet
 CLAUDE.md
 .copilot/
 .github/copilot/
+.github/copilot-instructions.md
