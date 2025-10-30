@@ -89,6 +89,10 @@ df = pd.DataFrame({
 - **Geographic Scope**: Georgia, with heavy focus on greater Atlanta area
 - **Data Sources**: Public data only
 - **Analysis Types**: Varied data analysis projects based on available public datasets
+- **Domain Focus**: Heavy focus on education and criminal justice
+  - **Education**:
+    - When possible, pull data from the Urban Institute's Education Data Portal API.
+    - Use the `pyeducationdata` for this. Documentation is at `data/education/pyeducationdata_documentation.md`
 
 ## Testing
 - **No unit tests required** unless explicitly requested
