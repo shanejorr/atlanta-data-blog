@@ -63,11 +63,6 @@ df = pd.DataFrame({
 
 ### Code Quality
 - **Clean code**: Write readable, well-structured code
-- **Well-commented**: Add clear comments explaining:
-  - What the code does
-  - Why certain approaches were chosen
-  - Any data-specific nuances or assumptions
-  - Sources of data and their context
 
 ### Code Organization
 - **No repetition within a single analysis**: If code is repeated, extract it into a function
@@ -117,7 +112,6 @@ df = pd.DataFrame({
    - Data loading and cleaning
    - Analysis with clear explanations
    - Interactive visualizations using Altair
-   - Well-commented code explaining methodology
 6. **Preview**: Run `quarto preview` to see your blog locally
 7. **Render**: Run `quarto render` to build the final site
 
@@ -130,7 +124,6 @@ df = pd.DataFrame({
 ## Notes for Claude
 - Prioritize code clarity over cleverness
 - When extracting functions, use meaningful names that describe the transformation or calculation
-- Always include comments about data sources and methodology
 - Focus on storytelling through data - the code supports the narrative
 - When creating new blog posts, follow the directory structure: `posts/post-name/index.qmd`
 - Test blog posts with `quarto preview` before finalizing

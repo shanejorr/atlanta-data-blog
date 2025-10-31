@@ -27,11 +27,15 @@ format:
     theme: journal
     css: styles.css
     toc: true
-    code-fold: false
     code-tools: true
     code-link: true
     date-format: "MMMM D, YYYY"
 
 execute:
+  enabled: true
+  echo: false
+  cache: true
+  warning: false
   freeze: auto
-  cache: false
+  python:
+    executable: python3
