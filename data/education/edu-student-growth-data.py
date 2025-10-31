@@ -37,8 +37,36 @@ demo_race_2023_school = "https://stgadoegidatadownloads.blob.core.windows.net/da
 
 # CCRPI ----------------------------------
 
-ccrpi_indicators = pd.read_excel(progress_indicator_2023_all).convert_dtypes(
+ccrpi_components = pd.read_excel(ccrpi_components_2023_all).convert_dtypes(
     dtype_backend="pyarrow"
 )
 
-ccrpi_indicators = clean_names(ccrpi_indicators)
+ccrpi_components = clean_names(ccrpi_components).drop(columns=["grade_configuration"])
+
+new_coltypes = {
+    "school_year": "Int64",  # nullable integer for year
+    "system_id": "string[pyarrow]",  # district/system identifier
+    "system_name": "string[pyarrow]",  # district/system name
+    "school_id": "string[pyarrow]",  # school identifier
+    "school_name": "string[pyarrow]",  # school name
+    "grade_cluster": "string[pyarrow]",  # e.g., "Elementary", "Middle", "High"
+    "content_mastery": "float64[pyarrow]",  # percentage/score (0-100)
+    "progress": "float64[pyarrow]",  # percentage/score (0-100)
+    "closing_gaps": "float64[pyarrow]",  # percentage/score (0-100)
+    "readiness": "float64[pyarrow]",  # percentage/score (0-100)
+    "graduation_rate": "float64[pyarrow]",  # percentage (0-100)
+}
+
+# Convert numeric columns, replacing non-numeric values with NaN
+numeric_cols = [
+    "content_mastery",
+    "progress",
+    "closing_gaps",
+    "readiness",
+    "graduation_rate",
+]
+
+for col in numeric_cols:
+    ccrpi_components[col] = pd.to_numeric(ccrpi_components[col], errors="coerce")
+
+ccrpi_components = ccrpi_components.astype(new_coltypes)
