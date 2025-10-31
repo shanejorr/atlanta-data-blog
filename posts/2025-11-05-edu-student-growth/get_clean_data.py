@@ -1,5 +1,8 @@
 import pandas as pd
+import re
 from janitor import clean_names
+from atlanta_data_blog.data_cleaning import extract_numeric_value
+
 
 # Get student growth metric data and export to parquet
 
@@ -7,7 +10,7 @@ from janitor import clean_names
 
 # 2023 CCRPI for school and state
 # only the progress indicator by subject
-progress_indicator_2023_all = "https://stgadoegidatadownloads.blob.core.windows.net/datadownloads/Accountability/CCRPI/Scoring%20by%20Component/2023%20CCRPI%20Scoring%20by%20Component_12_14_23.xlsx"
+progress_indicator_2023_all = "https://stgadoegidatadownloads.blob.core.windows.net/datadownloads/Accountability/CCRPI/Progress/2023%20CCRPI%20Progress%20Scores,%20Targets,%20and%20Flags%20by%20Subgroup_12_14_23.xlsx"
 # aggregate of all CCRPI components
 ccrpi_components_2023_all = "https://stgadoegidatadownloads.blob.core.windows.net/datadownloads/Accountability/CCRPI/Scoring%20by%20Component/2023%20CCRPI%20Scoring%20by%20Component_12_14_23.xlsx"
 
@@ -36,6 +39,53 @@ demo_race_2023_school = "https://stgadoegidatadownloads.blob.core.windows.net/da
 # clean data --------------------------------------
 
 # CCRPI ----------------------------------
+
+# both CCRPI dataset have these same columns, so make same type
+common_ccrpi_coltypes = {
+    "school_year": "Int64",  # nullable integer for year
+    "system_id": "string[pyarrow]",  # district/system identifier
+    "system_name": "string[pyarrow]",  # district/system name
+    "school_id": "string[pyarrow]",  # school identifier
+    "school_name": "string[pyarrow]",  # school name
+    "grade_cluster": "string[pyarrow]",  # e.g., "Elementary", "Middle", "High"
+}
+
+# progress indicator
+
+ccrpi_progress = pd.read_excel(progress_indicator_2023_all).convert_dtypes(
+    dtype_backend="pyarrow"
+)
+
+ccrpi_progress = clean_names(ccrpi_progress).drop(
+    columns=["grade_configuration", "target", "flag"]
+)
+
+new_coltypes = {
+    "reporting_label": "string[pyarrow]",
+    "indicator": "string[pyarrow]",  # district/system name
+    "indicator_score": "float64[pyarrow]",  # percentage/score (0-100)
+    "progress": "float64[pyarrow]",  # percentage/score (0-100)
+    "closing_gaps": "float64[pyarrow]",  # percentage/score (0-100)
+    "readiness": "float64[pyarrow]",  # percentage/score (0-100)
+    "graduation_rate": "float64[pyarrow]",  # percentage (0-100)
+}
+
+# Convert numeric columns, replacing non-numeric values with NaN
+numeric_cols = [
+    "content_mastery",
+    "progress",
+    "closing_gaps",
+    "readiness",
+    "graduation_rate",
+]
+
+for col in numeric_cols:
+    ccrpi_components[col] = pd.to_numeric(ccrpi_components[col], errors="coerce")
+
+ccrpi_components = ccrpi_components.astype(new_coltypes)
+
+
+# components
 
 ccrpi_components = pd.read_excel(ccrpi_components_2023_all).convert_dtypes(
     dtype_backend="pyarrow"

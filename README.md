@@ -58,6 +58,13 @@ atlanta-data-blog/
 └── DEVELOPMENT.md     # Development guide
 ```
 
+## Georgia Data Sources
+
+Education:
+- [Data downloads and dashboards](https://gosa.georgia.gov/dashboards-data-report-card/downloadable-data)
+- [Report card](https://gaawards.gosa.ga.gov/analytics/saw.dll?dashboard)
+- [Georgia Insights](https://georgiainsights.gadoe.org/)
+
 ## Creating Blog Posts
 
 See [DEVELOPMENT.md](DEVELOPMENT.md) for detailed instructions on creating new blog posts.

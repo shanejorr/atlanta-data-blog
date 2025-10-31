@@ -1,0 +1,34 @@
+---
+title: "Student Growth Metrics in Public School Evaluation"
+author: "Shane Orr"
+date: "2025-11-05"
+description: "Exploring how student growth metrics provide a more nuanced view of school performance beyond traditional proficiency measures"
+categories: [education, student achievement, metrics]
+image: "image.jpg"
+
+execute:
+  enabled: true
+  echo: false
+  warning: false
+  cache: true
+  python:
+    executable: python3
+---
+
+## Introduction
+
+Your analysis content goes here...
+
+```{python}
+import pandas as pd
+import altair as alt
+from atlanta_data_blog.data_cleaning import extract_numeric_value
+
+# Load data
+# df = pd.read_parquet('../../data/education/student-growth-data.parquet',
+#                      dtype_backend='pyarrow')
+```
+
+## Analysis
+
+## Conclusion
