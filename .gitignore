@@ -37,6 +37,7 @@ data/*.parquet
 # LLM/AI Assistant files
 .claude/
 CLAUDE.md
+AGENTS.md
 .copilot/
 .github/copilot/
 .github/copilot-instructions.md
